@@ -29,7 +29,12 @@ def player(board):
         for val in row:
             if val == X:
                 num_x += 1
-    if (num_x % 2 == 0): 
+    num_o = 0
+    for row in board:
+        for val in row:
+            if val == O:
+                num_o += 1
+    if num_x == num_o: 
         return X
     return O 
 
@@ -53,14 +58,14 @@ def result(board, action):
     """
     Returns the board that results from making move (i, j) on the board.
     """
-    if type(action) != 'tuple'  or type(action[1]) != 'int' or type(action[0] != 'int'):
+    '''    if type(action) != 'tuple'  or type(action[1]) != 'int' or type(action[0] != 'int'):
         raise TypeError("tuple of ints")
     if action[0] < 0 or action[0] > 2 or action[1] < 0 or action[1] > 2:
-        raise IndexError("Index value out of bounds")
+        raise IndexError("Index value out of bounds")'''
     
     temp = copy.deepcopy(board)
-    player = player(board)
-    temp[action[0]][action[1]] = player
+    play = player(board)
+    temp[action[0]][action[1]] = play
     return temp
     
 
@@ -83,7 +88,7 @@ def terminal(board):
     """
 
     if ( winner(board) is not None or
-        len(actions(board) == 0)):
+        len(actions(board)) == 0):
         return True
     return False 
 
@@ -94,17 +99,69 @@ def utility(board):
     Returns 1 if X has won the game, -1 if O has won, 0 otherwise.
     """
     win = winner(board)
-    if terminal(board) and win:
+    if win:
         return 1 if win == X else -1
     return 0
     
 
 
-    raise NotImplementedError
-
-
 def minimax(board):
-    """
-    Returns the optimal action for the current player on the board.
-    """
-    raise NotImplementedError
+    if terminal(board):
+        return None
+
+    turn = player(board)
+
+    best_action = None
+    alpha = -math.inf
+    beta = math.inf
+
+    if turn == X:
+        best_score = -math.inf
+
+        for action in actions(board):
+            score = min_value(result(board, action), alpha, beta)
+            if score > best_score:
+                best_score = score
+                best_action = action
+            alpha = max(alpha, best_score)
+
+    else:
+        best_score = math.inf
+
+        for action in actions(board):
+            score = max_value(result(board, action), alpha, beta)
+            if score < best_score:
+                best_score = score
+                best_action = action
+            beta = min(beta, best_score)
+
+    return best_action
+
+
+def max_value(board, alpha, beta):
+    if terminal(board):
+        return utility(board)
+
+    v = -math.inf
+    for action in actions(board):
+        v = max(v, min_value(result(board, action), alpha, beta))
+        alpha = max(alpha, v)
+        if alpha >= beta:
+            break
+    return v
+
+
+def min_value(board, alpha, beta):
+    if terminal(board):
+        return utility(board)
+
+    v = math.inf
+    for action in actions(board):
+        v = min(v, max_value(result(board, action), alpha, beta))
+        beta = min(beta, v)
+        if beta <= alpha:
+            break
+    return v    
+
+
+
