@@ -41,14 +41,35 @@ knowledge2 = And(
 # B says "A said 'I am a knave'."
 # B says "C is a knave."
 # C says "A is a knight."
+
+ASaidKnave = Symbol("A said 'I am a knave'")
 knowledge3 = And(
-    Biconditional(AKnave, Not(AKnight)), 
+    # A, B and C are knights or knaves but not both:
+    Biconditional(AKnave, Not(AKnight)),
     Biconditional(BKnave, Not(BKnight)),
     Biconditional(CKnave, Not(CKnight)),
-    
-    Biconditional(BKnight, And(CKnave, Biconditional(AKnight, AKnave))),
-    Biconditional(CKnight, AKnight)                      
+
+    # If B is a knight, A said 'I am a knave', and C is a knave:
+    #Implication(BKnight, CKnave),
+    Implication(BKnight, And(
+      # A then said 'I am a Knave', A may be a Knight or a Knave:
+      Implication(AKnight, AKnave),
+      Implication(AKnave, Not(AKnave)),
+      CKnave
+    )),
+    # If B is a knave, A said 'I am a knight' C is not a knave:
+    Implication(BKnave, Not(CKnave)),
+    Implication(BKnave, And(
+      # A then said 'I am a Knight', A may be a Knight or a Knave:
+      Implication(AKnight, AKnight),
+      Implication(AKnave, Not(AKnight))
+    )),
+    # If C is a knight, A is a knight:
+    Implication(CKnight, AKnight),
+    # If C is a knave, A is not a knight:
+    Implication(CKnave, Not(AKnight))
 )
+
 
 
 def main():
