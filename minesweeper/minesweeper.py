@@ -192,6 +192,51 @@ class MinesweeperAI():
         """
         self.moves_made.add(cell)
         self.mark_safe(cell)
+        
+
+        cells = set()
+        x, y =cell
+        # Loop over all cells within one row and column
+        for i in range(cell[0] - 1, cell[0] + 2):
+            for j in range(cell[1] - 1, cell[1] + 2):
+
+                # Ignore the cell itself
+                if (i, j) == cell:
+                    continue
+
+                # nearby cells which are not marked
+                if 0 <= i < self.height and 0 <= j < self.width:
+                    if (i, j) not in self.mines.union(self.safes):
+                        cells.add((i, j))
+
+        new_sent = Sentence(cells, count)
+        self.knowledge.append(new_sent)
+        
+        # marking cells as safe
+        for sent in self.knowledge:
+            if cell in sent.cells:
+                sent.cells -= sent.cell
+                sent.count -= 1
+        
+        # rechecking known mines
+        for sent in self.knowledge:
+            if sent.known_mines():
+                self.mines.add(sent.known_mines())
+
+        # infering new info
+        for sent in self.knowledge:
+            if new_sent.cells.issubset(sent.cells):
+                self.knowledge.append(Sentence(sent.difference(new_sent), sent.count - new_sent.count ))
+            elif sent.cells.issubset(new_sent.cells):
+                self.knowledge.append(Sentence(new_sent.difference(sent), - sent.count + new_sent.count ))
+
+        
+
+
+
+
+        
+
 
     def make_safe_move(self):
         """
