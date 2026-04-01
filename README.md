@@ -124,7 +124,7 @@ This repository is intended as a **learning and portfolio project**, demonstrati
 ## ⭐ Acknowledgements
 
 * Harvard University — CS50 AI
-* Course instructors and material creators
+* Course instructors: David J Malan and Brian Yu
 
 ---
 
