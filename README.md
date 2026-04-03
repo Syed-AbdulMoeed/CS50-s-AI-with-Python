@@ -74,7 +74,9 @@ Some of the implemented systems include:
 ## 🧪 Technologies Used
 
 * Python 3
-* Standard libraries (no heavy ML frameworks)
+* tensorflow
+* scikit-learn
+* opencv-python
 * Algorithmic problem solving
 
 ---
