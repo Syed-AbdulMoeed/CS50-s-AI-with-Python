@@ -11,11 +11,12 @@ The course explores the **core algorithms and principles behind modern AI**, inc
 
 This repository is a **hands-on implementation of fundamental AI techniques**, built from scratch in Python.
 
-Rather than relying on high-level libraries, the focus is on:
+Rather than relying solely on high-level abstractions, the focus is on:
 
 * understanding algorithms at a low level
 * designing intelligent systems
 * solving computational problems using structured approaches
+* bridging theory with practical machine learning and deep learning applications
 
 ---
 
@@ -58,41 +59,68 @@ Rather than relying on high-level libraries, the focus is on:
 
 ---
 
+### 🤖 Machine Learning & Deep Learning
+
+* Supervised learning (classification)
+* Neural networks & backpropagation
+* Convolutional Neural Networks (CNNs)
+* Reinforcement Learning (Q-learning)
+* Natural Language Processing (NLP)
+* Transformer architecture & attention mechanisms
+
+---
+
 ## 🛠️ Key Projects
 
-Some of the implemented systems include:
+### 🧩 Classical AI
 
-* **Graph search engine** (finding shortest paths between entities)
-* **Game-playing AI** using Minimax
-* **Logical reasoning systems** for puzzle solving
-* **Minesweeper AI** using knowledge inference
-* **PageRank algorithm** (sampling & iterative methods)
-* **Constraint Satisfaction solver** (e.g. crossword generator)
+* **Graph search engine** — shortest path between entities using BFS
+* **Game-playing AI (Nim)** — reinforcement learning agent using Q-learning
+* **Minesweeper AI** — logical inference and knowledge-based reasoning
+* **PageRank algorithm** — sampling and iterative approaches
+* **Crossword generator** — CSP solver with backtracking and AC-3
+
+---
+
+### 🤖 Machine Learning & AI Applications
+
+* **Shopping Prediction Model**
+  Built a classification model using **scikit-learn** to predict customer purchasing behavior from session data
+
+* **Traffic Sign Recognition**
+  Developed a **Convolutional Neural Network (CNN)** using **TensorFlow/Keras** for image classification
+
+* **Transformer Attention Analysis**
+  Analyzed a pretrained **BERT model**, examining attention mechanisms and token relationships in NLP tasks
 
 ---
 
 ## 🧪 Technologies Used
 
 * Python 3
-* tensorflow
+* NumPy
 * scikit-learn
-* opencv-python
-* Algorithmic problem solving
+* TensorFlow / Keras
+* OpenCV
+* Matplotlib
+* Algorithm design & data structures
 
 ---
 
 ## 📈 What I Learned
 
-* How core AI algorithms actually work under the hood
-* Designing and debugging complex systems
-* Applying theory (search, probability, logic) to real problems
+* How core AI algorithms work under the hood
+* Designing and debugging complex intelligent systems
+* Applying theory (search, probability, logic) to real-world problems
+* Building and training machine learning and deep learning models
+* Interpreting neural network behavior (e.g., attention in transformers)
 * Writing clean, modular, and scalable Python code
 
 ---
 
 ## 📌 Status
 
-🚧 **In Progress** — actively adding and refining implementations
+✅ **Completed** — all core projects implemented and documented
 
 ---
 
@@ -110,24 +138,29 @@ Each folder contains:
 * problem implementation
 * supporting files
 
-
 ---
 
 ## 📎 Notes
 
 This repository is intended as a **learning and portfolio project**, demonstrating:
 
-* strong fundamentals in AI
+* strong foundations in Artificial Intelligence
 * ability to implement algorithms from scratch
-* problem-solving and analytical thinking
+* experience with machine learning and deep learning workflows
+* analytical thinking and problem-solving skills
 
 ---
 
 ## ⭐ Acknowledgements
 
 * Harvard University — CS50 AI
-* Course instructors: David J Malan and Brian Yu
+* Course instructors: David J. Malan and Brian Yu
 
 ---
 
-[1]: https://cs50.harvard.edu/ai?utm_source=chatgpt.com "CS50's Introduction to Artificial Intelligence with Python"
+[1]: https://cs50.harvard.edu/ai
+
+
+
+If you want next level:
+We can add **GIFs/screenshots + results (accuracy, outputs)** → that’s what turns this from *good* to *standout GitHub*.
